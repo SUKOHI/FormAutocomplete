@@ -1,5 +1,7 @@
 <?php namespace Sukohi\FormAutocomplete;
 
+use Illuminate\Support\Facades\DB;
+
 class FormAutocomplete {
 
     private $_selector = '';
@@ -30,6 +32,13 @@ class FormAutocomplete {
 
         }
 
+        return $this;
+
+    }
+
+    public function db($table, $column) {
+
+        $this->_source = DB::table($table)->lists($column);
         return $this;
 
     }

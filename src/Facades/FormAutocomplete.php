@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Facade;
 
 class FormAutocomplete extends Facade {
 
-    protected static function getFacadeAccessor() { return 'form-autocomplete'; }
+    protected static function getFacadeAccessor() {
+
+        return 'form-autocomplete';
+
+    }
 
 }

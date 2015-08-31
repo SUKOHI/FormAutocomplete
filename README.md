@@ -1,28 +1,40 @@
 FormAutocomplete
 ====
 
-A PHP package mainly developed for Laravel to generate javascript tag for auto-complete through jQuery UI.
+A PHP package mainly developed for Laravel to generate javascript tag for auto-complete through jQuery UI.  
+(This is for Laravel 5+. [For Laravel 4.2](https://github.com/SUKOHI/FormAutocomplete/tree/1.0))
 
-Installation&settings for Laravel
+Installation
 ====
 
-After installation using composer, add the followings to the array in  app/config/app.php
+Add this package name in composer.json
 
-    'providers' => array(  
+    "require": {
+      "sukohi/form-autocomplete": "2.*"
+    }
+
+Execute composer command.
+
+    composer update
+
+Register the service provider in app.php
+
+    'providers' => [
         ...Others...,  
-        'Sukohi\FormAutocomplete\FormAutocompleteServiceProvider',
-    )
+        Sukohi\FormAutocomplete\FormAutocompleteServiceProvider::class,
+    ]
 
-Also
+Also alias
 
-    'aliases' => array(  
+    'aliases' => [
         ...Others...,  
-        'FormAutocomplete' => 'Sukohi\FormAutocomplete\Facades\FormAutocomplete',
-    )
+        'FormAutocomplete'   => Sukohi\FormAutocomplete\Facades\FormAutocomplete::class
+    ]
 
 Requirement
 ====
-jQuery and jQuery UI
+* [jQuery](https://jquery.com/)
+* [jQuery UI](https://jqueryui.com/)
 
 Usage
 ====
@@ -39,6 +51,7 @@ Usage
     <!-- Input -->
     <input id="title_1" type="text">
     <input id="title_2" type="text">
+    <input id="title_3" type="text">
     
     <script>
     
@@ -46,15 +59,19 @@ Usage
     
             // Using Array
     
-            {{ FormAutocomplete::selector('#title_1')->source(['aaaaa', 'bbbbb', 'cccccc']) }}
+            {!! FormAutocomplete::selector('#title_1')->source(['aaaaa', 'bbbbb', 'cccccc']) !!}
     
             // Using Closure
     
-            {{ FormAutocomplete::selector('#title_2')->source(function(){
+            {!! FormAutocomplete::selector('#title_2')->source(function(){
     
                 return \Item::where('id', '>', 2)->lists('title');  // You need to return array values.
     
-            }) }}
+            }) !!}
+            
+            // Using Table and column
+    
+            {!! FormAutocomplete::selector('#title_3')->db('items', 'title') !!}
     
         });
     
