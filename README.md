@@ -28,7 +28,7 @@ Also alias
 
     'aliases' => [
         ...Others...,  
-        'form-autocomplete' => 'Sukohi\FormAutocomplete\Facades\FormAutocomplete',
+        'FormAutocomplete' => 'Sukohi\FormAutocomplete\Facades\FormAutocomplete',
     ]
 
 Requirement

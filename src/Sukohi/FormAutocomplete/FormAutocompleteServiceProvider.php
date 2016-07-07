@@ -18,7 +18,7 @@ class FormAutocompleteServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('sukohi/form-autocomplete');
+		$this->package('whoops-report/form-autocomplete');
 	}
 
 	/**
